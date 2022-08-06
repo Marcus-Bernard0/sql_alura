@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="NOTAS_FISCAIS" directorySegmentName="seg_0" id="D36D96A9-0685-8520-B93D-7082B73693E2">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:21 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>38C649E3-E535-0ED2-354D-E3C394D131D7</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="MATRICULA" id="4214E2CB-7695-5790-A101-539D45CFED48">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IMPOSTO" id="70FA636C-C342-F87C-82C2-6452A5F6148C">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NUMERO" id="74851663-6465-E5C1-650C-23E3003166A7">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DATA_VENDA" id="AF7D9954-5E63-DFC7-0E81-3C9A46D17AFA">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CPF" id="FB740803-C2F3-5F4A-946A-290FAB1CC071">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_NOTAS_FISCAIS" id="E7CB10E3-8A61-E0F6-1A12-1D6E8E673189">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_NOTAS_FISCAIS2" id="1E2F5C5C-E18C-68E1-617D-4ED5E742DF07">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_NOTAS_FISCAIS1" id="A16D74EB-6D7C-8B0F-773A-5E8EC1EFD605">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_NOTAS_FISCAIS" id="B52E8CA9-152F-AC3D-1002-8F633C2F5C16">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<existingIndex>E7CB10E3-8A61-E0F6-1A12-1D6E8E673189</existingIndex>
+<indexSegment>57044E44-70F7-6563-EF79-8CB0AAA432F8</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

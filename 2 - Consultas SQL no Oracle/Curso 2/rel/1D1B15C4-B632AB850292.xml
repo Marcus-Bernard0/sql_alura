@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="1D1B15C4-AB06-7299-B5A7-B632AB850292" mainViewID="19E2D31E-377F-B035-44DD-7E1A0E654F1F">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:12:59 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>79C73AAF-E1A7-E669-7DF0-025EE81A2AFC</selectedRDBMSSite>
+<importConnectionStamps>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>Conex%C3%A3o+Oracle</connName>
+<connUser>SYSTEM</connUser>
+<connType>1</connType>
+</importConnectionStamp>
+</importConnectionStamps>
+</relationalModel>

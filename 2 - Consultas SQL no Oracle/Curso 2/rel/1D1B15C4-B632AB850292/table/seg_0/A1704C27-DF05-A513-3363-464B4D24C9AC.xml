@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A1704C27-DF05-A513-3363-464B4D24C9AC" schemaObject="204D8CA7-E96D-29C7-2EBA-1B60B2E39557" name="TB_VENDEDORES">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>TB_VENDEDORES</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MATRICULA" id="399B335D-D2FD-9883-8896-196C31A54B90">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>TB_VENDEDORES</sourceObjSchema>
+<sourceObjName>MATRICULA</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5 BYTE</dataTypeSize>
+<ownDataTypeParameters>5 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="E8F14818-5030-A944-8424-0D0E1B2A0C62">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>TB_VENDEDORES</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMISSAO" id="69CD46D8-EC2C-519F-26CD-D106045C9E46">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>TB_VENDEDORES</sourceObjSchema>
+<sourceObjName>COMISSAO</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>126</dataTypePrecision>
+<ownDataTypeParameters>,126,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FERIAS" id="CDB2FDB2-692B-4BCC-CE0D-6DACA742C654">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>TB_VENDEDORES</sourceObjSchema>
+<sourceObjName>FERIAS</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,1,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADMISSAO" id="38C20D36-513E-2F4D-C805-78D63EDB2740">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>TB_VENDEDORES</sourceObjSchema>
+<sourceObjName>ADMISSAO</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3734A635-B9A1-60A5-97A3-F707FC6252A1" name="PK_TB_VENDEDORES">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_TB_VENDEDORES</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="399B335D-D2FD-9883-8896-196C31A54B90"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="96F51854-FFC7-0CE5-9EAD-C544DF1BCDB6" schemaObject="204D8CA7-E96D-29C7-2EBA-1B60B2E39557" name="PK_TB_VENDEDORES">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_TB_VENDEDORES</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="399B335D-D2FD-9883-8896-196C31A54B90"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

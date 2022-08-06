@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TB_VENDEDORES" directorySegmentName="seg_0" id="A1704C27-DF05-A513-3363-464B4D24C9AC">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>38C649E3-E535-0ED2-354D-E3C394D131D7</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ADMISSAO" id="38C20D36-513E-2F4D-C805-78D63EDB2740">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MATRICULA" id="399B335D-D2FD-9883-8896-196C31A54B90">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COMISSAO" id="69CD46D8-EC2C-519F-26CD-D106045C9E46">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FERIAS" id="CDB2FDB2-692B-4BCC-CE0D-6DACA742C654">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOME" id="E8F14818-5030-A944-8424-0D0E1B2A0C62">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_TB_VENDEDORES" id="96F51854-FFC7-0CE5-9EAD-C544DF1BCDB6">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_TB_VENDEDORES" id="3734A635-B9A1-60A5-97A3-F707FC6252A1">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:26 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<existingIndex>96F51854-FFC7-0CE5-9EAD-C544DF1BCDB6</existingIndex>
+<indexSegment>57044E44-70F7-6563-EF79-8CB0AAA432F8</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

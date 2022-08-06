@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TB_CLIENTES" directorySegmentName="seg_0" id="32967282-26AC-1F00-689B-C2226E98B191">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>38C649E3-E535-0ED2-354D-E3C394D131D7</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CPF" id="00DACE06-F2BD-735E-065E-8689743E0A1E">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="VOLUME_COMPRA" id="23DBE7B4-1DB7-F2C1-A4CB-4A4B5F786D35">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CEP" id="2872EE63-7C3A-6284-A882-B79819E8C89C">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ENDERECO2" id="3D51797E-2802-7F10-8AFF-97C79A2EFD91">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDADE" id="4BE84A19-C6C7-0B51-5B76-135C7855515A">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LIMITE_CREDITO" id="5180B63E-DFBE-490B-F085-96448BD9544A">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BAIRRO" id="51FC4836-7BD1-8032-FEF0-02EAB6FA3C6B">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SEXO" id="57085372-FCF9-775E-EC73-7A180E78C50F">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOME" id="597DBE36-ED72-BCC6-D377-373E08912AC8">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ENDERECO1" id="5ED15D39-3BFF-84F1-5CD4-046280E583C7">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ESTADO" id="79053869-DF06-5758-5878-9F37A12D4502">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRIMEIRA_COMPRA" id="BC06903C-10A4-825A-223E-4FD600BDABF9">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DATA_NASCIMENTO" id="C75F461F-FB5F-2146-75D7-35B61193DEF4">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CIDADE" id="D833478A-0288-57EE-B61A-C540733D36AB">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_TB_CLIENTES" id="0FF1263F-C9AB-982D-C325-559B81AE83C4">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_TB_CLIENTES" id="28F097B7-BAF5-FA32-A2F8-6D1392A90FD0">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:01 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<existingIndex>0FF1263F-C9AB-982D-C325-559B81AE83C4</existingIndex>
+<indexSegment>57044E44-70F7-6563-EF79-8CB0AAA432F8</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

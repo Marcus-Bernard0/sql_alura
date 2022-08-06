@@ -1,0 +1,135 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D36D96A9-0685-8520-B93D-7082B73693E2" schemaObject="204D8CA7-E96D-29C7-2EBA-1B60B2E39557" name="NOTAS_FISCAIS">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>NOTAS_FISCAIS</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:21 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CPF" id="FB740803-C2F3-5F4A-946A-290FAB1CC071">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>NOTAS_FISCAIS</sourceObjSchema>
+<sourceObjName>CPF</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>11</dataTypeSize>
+<ownDataTypeParameters>11,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MATRICULA" id="4214E2CB-7695-5790-A101-539D45CFED48">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>NOTAS_FISCAIS</sourceObjSchema>
+<sourceObjName>MATRICULA</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA_VENDA" id="AF7D9954-5E63-DFC7-0E81-3C9A46D17AFA">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>NOTAS_FISCAIS</sourceObjSchema>
+<sourceObjName>DATA_VENDA</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUMERO" id="74851663-6465-E5C1-650C-23E3003166A7">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>NOTAS_FISCAIS</sourceObjSchema>
+<sourceObjName>NUMERO</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IMPOSTO" id="70FA636C-C342-F87C-82C2-6452A5F6148C">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>NOTAS_FISCAIS</sourceObjSchema>
+<sourceObjName>IMPOSTO</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>126</dataTypePrecision>
+<ownDataTypeParameters>,126,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B52E8CA9-152F-AC3D-1002-8F633C2F5C16" name="PK_NOTAS_FISCAIS">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_NOTAS_FISCAIS</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74851663-6465-E5C1-650C-23E3003166A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E7CB10E3-8A61-E0F6-1A12-1D6E8E673189" schemaObject="204D8CA7-E96D-29C7-2EBA-1B60B2E39557" name="PK_NOTAS_FISCAIS">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_NOTAS_FISCAIS</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74851663-6465-E5C1-650C-23E3003166A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A16D74EB-6D7C-8B0F-773A-5E8EC1EFD605" name="FK_NOTAS_FISCAIS1">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4214E2CB-7695-5790-A101-539D45CFED48"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1E2F5C5C-E18C-68E1-617D-4ED5E742DF07" name="FK_NOTAS_FISCAIS2">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FB740803-C2F3-5F4A-946A-290FAB1CC071"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

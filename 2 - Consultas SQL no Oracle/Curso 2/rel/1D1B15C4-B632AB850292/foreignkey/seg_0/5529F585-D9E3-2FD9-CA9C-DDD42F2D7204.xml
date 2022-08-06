@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5529F585-D9E3-2FD9-CA9C-DDD42F2D7204" containerWithKeyObject="D36D96A9-0685-8520-B93D-7082B73693E2" localFKIndex="A16D74EB-6D7C-8B0F-773A-5E8EC1EFD605" name="FK_NOTAS_FISCAIS1">
+<sourceConnName>Conex%C3%A3o+Oracle</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>FK_NOTAS_FISCAIS1</sourceObjName>
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:14:22 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<referredTableLongName>SYSTEM.TABELA_DE_VENDEDORES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<mandatory>true</mandatory>
+<refColNames>MATRICULA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

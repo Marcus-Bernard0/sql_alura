@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TABELA_DE_PRODUTOS" directorySegmentName="seg_0" id="2ACC6A63-5EE8-DA69-8C03-ED516E9CB0A5">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>38C649E3-E535-0ED2-354D-E3C394D131D7</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SABOR" id="2EA3FFCC-9A78-F1C9-9945-BFE0096D9A33">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EMBALAGEM" id="3417FACF-3F96-5417-8206-726F4A40D433">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRECO_DE_LISTA" id="6A1D52C4-0E69-88B5-241F-EA360E2FB2A2">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CODIGO_DO_PRODUTO" id="7FF2693D-D0FC-DAE9-6EC0-B2736073C044">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TAMANHO" id="905320CC-D7E8-2242-BA19-A4FEBAFF43FF">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOME_DO_PRODUTO" id="E17DAC8D-1E01-4A10-D4F4-C6C185B9CA2B">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_TABELA_DE_PRODUTOS" id="CAB1AA28-21FB-D52F-AAC6-475AAEC0797B">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<schemaObject>204D8CA7-E96D-29C7-2EBA-1B60B2E39557</schemaObject>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_TABELA_DE_PRODUTOS" id="ADEBEBAD-07E3-107F-CBB5-6D945CB5C822">
+<createdBy>marcu</createdBy>
+<createdTime>2022-08-05 20:13:05 UTC</createdTime>
+<ownerDesignName>Curso 2</ownerDesignName>
+<segment>57044E44-70F7-6563-EF79-8CB0AAA432F8</segment>
+<tableSpace>E7E437DB-4840-803A-1250-962EB277BED5</tableSpace>
+<existingIndex>CAB1AA28-21FB-D52F-AAC6-475AAEC0797B</existingIndex>
+<indexSegment>57044E44-70F7-6563-EF79-8CB0AAA432F8</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
