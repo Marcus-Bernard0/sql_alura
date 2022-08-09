@@ -77,3 +77,28 @@ select bairro, sum(limite_de_credito) as total_credito from tabela_de_clientes w
 
 select estado, bairro, sum(limite_de_credito) as total_credito from tabela_de_clientes group by estado, bairro order by estado, bairro;
 
+
+-- Case
+
+select nome_do_produto, preco_de_lista,
+(case when preco_de_lista >= 12 then 'produo caro'
+    when preco_de_lista >= 7 and preco_de_lista < 12 then 'produto barato'
+    else 'produto barato'
+    end) as status_preco
+    from tabela_de_produtos
+    where sabor = 'Manga';
+    
+-- Estatística com case e groupby
+select embalagem,
+(case when preco_de_lista >= 12 then 'produo caro'
+    when preco_de_lista >= 7 and preco_de_lista < 12 then 'produto barato'
+    else 'produto barato'
+    end) as status_preco,
+    avg(preco_de_lista) as media_preco
+    from tabela_de_produtos
+    group by embalagem, 
+    (case when preco_de_lista >= 12 then 'produo caro'
+    when preco_de_lista >= 7 and preco_de_lista < 12 then 'produto barato'
+    else 'produto barato'
+    end)
+    

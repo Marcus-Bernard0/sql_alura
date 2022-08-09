@@ -21,3 +21,18 @@ select * from itens_notas_fiscais  where codigo_do_produto = 1101035 order by qu
 -- Aproveitando o exercício do vídeo anterior, quantos itens existem com a maior quantidade de venda para o produto '1101035'?
 
 select codigo_do_produto, count(*) as quantidade_99 from itens_notas_fiscais where codigo_do_produto = 1101035 and quantidade = 99 group by codigo_do_produto;
+
+-- Veja o ano de nascimento dos clientes e classifique-os como:
+
+-- Nascidos antes de 1990 são velhos
+-- Nascidos entre 1990 e 1995 são jovens
+-- Nascidos depois de 1995 são crianças
+-- Liste o nome dos clientes e suas classificações.
+
+select * from tabela_de_clientes;
+select nome, data_de_nascimento,
+(case when to_char(data_de_nascimento, 'yyyy' )< 1990 then 'Velhos'
+    when to_char(data_de_nascimento, 'yyyy' ) >= 1990 and to_char(data_de_nascimento, 'yyyy' ) <= 1995 then 'Jovens'
+    else 'Crianças'
+    end) as classificacao_idade
+    from tabela_de_clientes;
