@@ -100,5 +100,25 @@ select embalagem,
     (case when preco_de_lista >= 12 then 'produo caro'
     when preco_de_lista >= 7 and preco_de_lista < 12 then 'produto barato'
     else 'produto barato'
-    end)
+    end);
     
+-- Having
+select estado, sum(limite_de_credito) as soma_credito
+from tabela_de_clientes
+group by estado
+having sum(limite_de_credito) >= 850000;
+
+select embalagem, max(preco_de_lista) as maior_preco,
+min(preco_de_lista) as menor_preco from tabela_de_produtos
+group by embalagem;
+
+select embalagem, max(preco_de_lista) as maior_preco,
+min(preco_de_lista) as menor_preco from tabela_de_produtos
+group by embalagem
+having sum(preco_de_lista) <= 80;
+
+-- conferindo os valores 
+select * from tabela_de_produtos;
+select embalagem, sum(preco_de_lista) 
+from tabela_de_produtos
+group by embalagem;

@@ -36,3 +36,15 @@ select nome, data_de_nascimento,
     else 'Crianças'
     end) as classificacao_idade
     from tabela_de_clientes;
+
+-- Quais os clientes que fizeram mais de 2000 compras em 2016?
+select cpf,  count(*) from notas_fiscais
+where to_char(data_venda, 'yyyy') = '2016'
+group by cpf
+having count(*) >= 2000;
+
+-- Selecionando quem gastou mais de R$20.000,00
+select nome, max(volume_de_compra) from tabela_de_clientes
+group by nome
+having max(volume_de_compra) >= 20000;
+
