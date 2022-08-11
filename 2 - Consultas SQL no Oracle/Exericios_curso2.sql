@@ -48,3 +48,14 @@ select nome, max(volume_de_compra) from tabela_de_clientes
 group by nome
 having max(volume_de_compra) >= 20000;
 
+
+-- Levando em consideração que o valor financeiro das vendas consiste em multiplicar a quantidade pelo preço, obtenha o faturamento anual da empresa.
+select * from notas_fiscais;
+select * from itens_notas_fiscais;
+
+
+select to_char(data_venda, 'yyyy'), sum(quantidade * preco) as faturamento
+from notas_fiscais nf
+inner join itens_notas_fiscais inf
+on nf.numero = inf.numero
+group by to_char(data_venda, 'yyyy');

@@ -122,3 +122,14 @@ select * from tabela_de_produtos;
 select embalagem, sum(preco_de_lista) 
 from tabela_de_produtos
 group by embalagem;
+
+-- Join
+--inner join
+select matricula, count(*)numero_notas from notas_fiscais
+group by matricula; 
+
+select a.matricula, b.nome, count(*)from notas_fiscais A
+inner join tabela_de_vendedores b
+on a.matricula = b.matricula
+group by a.matricula, b.nome;
+
