@@ -133,3 +133,72 @@ inner join tabela_de_vendedores b
 on a.matricula = b.matricula
 group by a.matricula, b.nome;
 
+
+-- left join
+select distinct A.cpf as cpf_clientes,
+A.nome, B.cpf as cpf_da_nota
+from tabela_de_clientes A
+left join notas_fiscais B
+on A.cpf = B.cpf;
+
+
+
+-- full join e cross join
+ -- inner join
+select
+TV.nome as nome_vendedores
+,TV.bairro as bairro_vendedores
+,TC.nome as nome_cliente
+,TC.bairro as bairro_cliente
+from
+tabela_de_clientes TC
+inner join
+tabela_de_vendedores TV
+on TV.bairro = TC.bairro ; 
+
+-- left
+select
+TV.nome as nome_vendedores
+,TV.bairro as bairro_vendedores
+,TC.nome as nome_cliente
+,TC.bairro as bairro_cliente
+from
+tabela_de_clientes TC
+left join
+tabela_de_vendedores TV
+on TV.bairro = TC.bairro ; 
+
+-- right
+select 
+TV.nome as nome_vendedores
+,TV.bairro as bairro_vendedores
+,TC.nome as nome_cliente
+,TC.bairro as bairro_cliente
+from
+tabela_de_clientes TC
+right join
+tabela_de_vendedores TV
+on TV.bairro = TC.bairro ; 
+
+
+-- full join
+select 
+TV.nome as nome_vendedores
+,TV.bairro as bairro_vendedores
+,TC.nome as nome_cliente
+,TC.bairro as bairro_cliente
+from
+tabela_de_clientes TC
+full join
+tabela_de_vendedores TV
+on TV.bairro = TC.bairro ; 
+
+
+-- cross join
+select 
+TV.nome as nome_vendedores
+,TV.bairro as bairro_vendedores
+,TC.nome as nome_cliente
+,TC.bairro as bairro_cliente
+from
+tabela_de_clientes TC, tabela_de_vendedores TV
