@@ -201,4 +201,51 @@ TV.nome as nome_vendedores
 ,TC.nome as nome_cliente
 ,TC.bairro as bairro_cliente
 from
-tabela_de_clientes TC, tabela_de_vendedores TV
+tabela_de_clientes TC, tabela_de_vendedores TV;
+
+
+
+-- Union
+
+select distinct bairro from tabela_de_clientes
+union
+select distinct bairro from tabela_de_vendedores;
+
+select distinct bairro from tabela_de_clientes
+union all
+select distinct bairro from tabela_de_vendedores;
+
+select distinct bairro as bairro, 'cliente' as  tipo from tabela_de_clientes
+union
+select distinct bairro as bairro, 'vendedor' as tipo from tabela_de_vendedores;
+
+-- Sub consulta
+select distinct bairro from tabela_de_vendedores;
+
+select * from tabela_de_clientes 
+where bairro
+in (select distinct bairro from tabela_de_vendedores);
+
+select embalagem, sum(preco_de_lista) as soma_preco
+from tabela_de_produtos group by embalagem
+having sum(preco_de_lista) <=80;
+
+select z.embalagem, z.soma_preco from
+(select embalagem, sum(preco_de_lista) as soma_preco
+from tabela_de_produtos group by embalagem) z
+where z.soma_preco <= 80;
+
+select z.nome_do_produto, z.preco_medio from
+(select nome_do_produto , avg(preco_de_lista) as preco_medio
+from tabela_de_produtos group by nome_do_produto) z 
+where z.preco_medio <=25;
+
+
+ -- View
+ select * from vw_embalagem;
+ 
+ select * from vw_embalagem where soma_preco <=50;
+
+select * from tabela_de_produtos A
+inner join vw_embalagem B
+on A.embalagem = B.embalagem;

@@ -59,3 +59,22 @@ from notas_fiscais nf
 inner join itens_notas_fiscais inf
 on nf.numero = inf.numero
 group by to_char(data_venda, 'yyyy');
+
+-- Tendo em vista a seguinte consulta
+-- Qual seria a consulta, usando subconsulta, que seria equivalente à consulta acima?
+
+SELECT CPF, COUNT(*) FROM NOTAS_FISCAIS
+WHERE TO_CHAR(DATA_VENDA, 'YYYY') = '2016'
+GROUP BY CPF
+HAVING COUNT(*) > 2000;
+
+
+select x.cpf, x.contador from 
+(select cpf, count(*) as contador from notas_fiscais
+where to_char(data_venda, 'yyyy' ) = 2016
+group by cpf) x
+where x.contador > 2000;
+
+
+
+
