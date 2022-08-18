@@ -245,7 +245,41 @@ where z.preco_medio <=25;
  select * from vw_embalagem;
  
  select * from vw_embalagem where soma_preco <=50;
+ 
+ select * from view1;
 
 select * from tabela_de_produtos A
 inner join vw_embalagem B
 on A.embalagem = B.embalagem;
+
+select distinct embalagem from tabela_de_produtos;
+
+-- Funções  
+select nome from tablea_de_clientes;
+select nome, upper(nome) from tabela_de_clientes;
+select nome, lower(nome) from tabela_de_clientes;
+
+select nome_do_produto, initcap(nome_do_produto) from tabela_de_produtos;
+
+select concat(endereco_1, bairro) from tabela_De_clientes;
+
+select nome, 'Endereço: ' || endereco_1 || ' ' || bairro || ' ' || cidade ||
+' ' || estado || ', Cep: ' || cep
+from tabela_de_clientes;
+
+select nome_do_produto, lpad(nome_do_produto, 60, '*') from tabela_de_produtos;
+
+select nome_do_produto, substr(nome_do_produto, 3,5) 
+from tabela_de_produtos;
+
+select nome_do_produto, instr(nome_do_produto, '-') 
+from tabela_de_produtos;
+
+select ltrim('      aaaa')
+from dual;
+
+select nome_do_produto, replace(nome_do_produto, 'Litro', 'L') 
+from tabela_de_produtos;
+
+select nome_do_produto, replace(replace(nome_do_produto, 'Litro', 'L'),'Ls', 'L')
+from tabela_de_produtos;
