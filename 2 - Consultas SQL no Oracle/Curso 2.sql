@@ -283,3 +283,24 @@ from tabela_de_produtos;
 
 select nome_do_produto, replace(replace(nome_do_produto, 'Litro', 'L'),'Ls', 'L')
 from tabela_de_produtos;
+
+-- Funções de data
+select sysdate from dual;
+
+select to_char(sysdate, 'yyyy/mm/dd hh:mm:ss') from dual;
+
+select sysdate + 10 from dual;
+select sysdate - 10 from dual;
+
+select months_between(sysdate, to_date('2023-02-20', 'yyyy/mm/dd')) 
+from dual;
+
+select add_months(sysdate, 10) from dual;
+
+select next_day(sysdate, 'sexta') from dual;
+
+select last_day(sysdate) from dual;
+
+select trunc(sysdate, 'year') from dual;
+
+select trunc(sysdate, 'month') from dual;

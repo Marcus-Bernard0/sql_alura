@@ -76,5 +76,9 @@ group by cpf) x
 where x.contador > 2000;
 
 
+-- Faça uma consulta listando o nome do cliente e o endereço completo (com rua, bairro, cidade e estado).
+select * from tabela_de_clientes;
 
+select nome, 'Endereço: ' || endereco_1 || ' ' || bairro || ' ' || cidade || ' ' || estado as endereco_completo
+from tabela_de_clientes;
 
