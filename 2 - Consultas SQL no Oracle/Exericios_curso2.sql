@@ -82,3 +82,20 @@ select * from tabela_de_clientes;
 select nome, 'Endereço: ' || endereco_1 || ' ' || bairro || ' ' || cidade || ' ' || estado as endereco_completo
 from tabela_de_clientes;
 
+-- Crie uma consulta que mostre o nome e a idade atualizada dos clientes.
+
+select nome, months_between (sysdate, data_de_nascimento) / 12 as idade
+from tabela_de_clientes;
+
+-- Na tabela de notas fiscais, temos o valor do imposto. Já na tabela de itens, temos a quantidade e o faturamento. Calcule o valor do imposto pago no ano de 2016, arredondando para o menor inteiro.
+select * from notas_fiscais;
+select * from itens_notas_fiscais;
+
+select to_char(data_venda, 'yyyy'), floor(sum(imposto * (quantidade * preco))) as qtd
+from notas_fiscais nf
+inner join itens_notas_fiscais inf 
+on nf.numero = inf.numero
+where to_char(data_venda, 'yyyy') = 2016 
+group by to_char(data_venda, 'yyyy') ;
+
+

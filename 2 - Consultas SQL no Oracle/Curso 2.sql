@@ -304,3 +304,17 @@ select last_day(sysdate) from dual;
 select trunc(sysdate, 'year') from dual;
 
 select trunc(sysdate, 'month') from dual;
+
+-- Funções matemáticas
+select round(3.4) from dual;
+
+select ceil (3.4) from dual;
+
+select power (20, 2 ) from dual;
+
+select sign(-1054) from dual;
+
+select mod (10,8) from dual;
+
+-- Conversão de dados
+select to_char(sysdate, 'dd/mm/yyyy hh12:mm:ss am' ) from dual;
