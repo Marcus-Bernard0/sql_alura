@@ -318,3 +318,93 @@ select mod (10,8) from dual;
 
 -- Conversão de dados
 select to_char(sysdate, 'dd/mm/yyyy hh12:mm:ss am' ) from dual;
+
+
+
+-- Relatório de vendas
+select * from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on  NF.numero = INF.numero;
+
+select NF.cpf, NF.data_venda, INF.quantidade
+from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on  NF.numero = INF.numero;
+
+select NF.cpf, to_char(NF.data_venda, 'yyyy-mm') as MES_ANO,
+INF.quantidade
+from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on  NF.numero = INF.numero;
+
+
+
+select NF.cpf, to_char(NF.data_venda, 'yyyy-mm') as MES_ANO,
+sum(INF.quantidade) as VOLUME_DE_VENDIDO
+from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on  NF.numero = INF.numero
+group by NF.cpf, to_char(NF.data_venda, 'yyyy-mm');
+
+select cpf, nome, volume_de_compra from tabela_de_clientes;
+
+select cadastro.cpf, cadastro.nome, vendas.mes_ano, cadastro.volume_de_compra,
+vendas.vendas_limite
+from
+(select NF.cpf, to_char(NF.data_venda, 'yyyy-mm') as MES_ANO,
+sum(INF.quantidade) as VENDAS_LIMITE
+from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on  NF.numero = INF.numero
+group by NF.cpf, to_char(NF.data_venda, 'yyyy-mm')) VENDAS
+inner join 
+(select cpf, nome, volume_de_compra from tabela_de_clientes) cadastro
+on vendas.cpf = cadastro.cpf;
+
+
+select cadastro.cpf, cadastro.nome, vendas.mes_ano, cadastro.volume_de_compra,
+vendas.vendas_limite,
+case when vendas.vendas_limite >= cadastro.volume_de_compra then 'Venda válida'
+else 'Venda Inválida' end as resultado
+from
+(select NF.cpf, to_char(NF.data_venda, 'yyyy-mm') as MES_ANO,
+sum(INF.quantidade) as VENDAS_LIMITE
+from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on  NF.numero = INF.numero
+group by NF.cpf, to_char(NF.data_venda, 'yyyy-mm')) VENDAS
+inner join 
+(select cpf, nome, volume_de_compra from tabela_de_clientes) cadastro
+on vendas.cpf = cadastro.cpf
+where mes_ano = '2018-01';
+
+
+-- continuar daqui
+select x.cpf, x.nome, x.mes_ano, x.quantidade_vendas, x.quantidade_limite,
+case when (x.quantidade_limite - x.quantidade_vendas ) < 0 then 'inválida'
+else 'Valida' end as RESULTADO, (1 - (x.quantidade_limite/x.quantidade_vendas)) * 100 as PERCENTUAL
+from(
+(select NF.cpf, TC.nome, to_char(NF.data_venda, 'yyyy-mm') as mes_ano
+, sum(INF.quantidade) as quantidade_vendas
+, max(TC.volume_de_compra) as quantidade_limite from notas_fiscais NF
+inner join itens_notas_fiscais INF
+on NF.numero = INF.numero
+inner join tabela_de_clientes TC
+on TC.cpf = NF.cpf
+group by NF.cpf, TC.nome, to_char(NF.data_venda, 'yyyy-mm')) X
+
+
+
+SELECT X.CPF, X.NOME, X.MES_ANO, X.QUANTIDADE_VENDAS, X.QUANTIDADE_LIMITE,
+CASE WHEN (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0 THEN 'INVÁLIDA'
+ELSE 'VÁLIDA' END AS STATUS_VENDA, (1 - (X.QUANTIDADE_LIMITE/X.QUANTIDADE_VENDAS)) * 100 AS PERCENTUAL
+FROM (
+SELECT NF.CPF, TC.NOME, TO_CHAR(NF.DATA_VENDA, 'YYYY-MM') AS MES_ANO
+, SUM(INF.QUANTIDADE) AS QUANTIDADE_VENDAS 
+, MAX(TC.VOLUME_DE_COMPRA) AS QUANTIDADE_LIMITE FROM NOTAS_FISCAIS NF
+INNER JOIN ITENS_NOTAS_FISCAIS INF
+ON NF.NUMERO = INF.NUMERO
+INNER JOIN TABELA_DE_CLIENTES TC 
+ON TC.CPF = NF.CPF
+GROUP BY NF.CPF, TC.NOME, TO_CHAR(NF.DATA_VENDA, 'YYYY-MM')) X
+WHERE (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0;
