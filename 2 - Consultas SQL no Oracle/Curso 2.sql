@@ -383,8 +383,8 @@ where mes_ano = '2018-01';
 select x.cpf, x.nome, x.mes_ano, x.quantidade_vendas, x.quantidade_limite,
 case when (x.quantidade_limite - x.quantidade_vendas ) < 0 then 'inválida'
 else 'Valida' end as RESULTADO, (1 - (x.quantidade_limite/x.quantidade_vendas)) * 100 as PERCENTUAL
-from(
-(select NF.cpf, TC.nome, to_char(NF.data_venda, 'yyyy-mm') as mes_ano
+from (
+select NF.cpf, TC.nome, to_char(NF.data_venda, 'yyyy-mm') as mes_ano
 , sum(INF.quantidade) as quantidade_vendas
 , max(TC.volume_de_compra) as quantidade_limite from notas_fiscais NF
 inner join itens_notas_fiscais INF
@@ -392,6 +392,7 @@ on NF.numero = INF.numero
 inner join tabela_de_clientes TC
 on TC.cpf = NF.cpf
 group by NF.cpf, TC.nome, to_char(NF.data_venda, 'yyyy-mm')) X
+where (x.quantidade_limite - x.quantidade_vendas) < 0;
 
 
 
@@ -408,3 +409,170 @@ INNER JOIN TABELA_DE_CLIENTES TC
 ON TC.CPF = NF.CPF
 GROUP BY NF.CPF, TC.NOME, TO_CHAR(NF.DATA_VENDA, 'YYYY-MM')) X
 WHERE (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0;
+
+-- Relatório 2 Vendas por produtos
+
+select * from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto;
+
+-- selecionado campos interessados
+
+select tp.sabor, inf.quantidade from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto;
+
+-- fazendo join com numero da nota fiscal para pegar a data e groupby
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+group by tp.sabor, to_char(nf.data_venda, 'yyyy');
+
+
+-- selecionando somente ano de 2016
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by tp.sabor, to_char(nf.data_venda, 'yyyy');
+
+-- ordenando
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by tp.sabor, to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc;
+
+-- Percentual de vendas
+-- calculando valor total
+select sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc;
+
+
+select * from
+(
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by tp.sabor, to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) venda_sabor
+inner join (
+select sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) total_venda
+on venda_sabor.ano = total_venda.ano;
+
+
+-- selecionando campos necessários
+select venda_sabor.sabor, venda_sabor.ano, venda_sabor.quantidade_vendida, total_venda.quantidade_vendida as total 
+from
+(
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by tp.sabor, to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) venda_sabor
+inner join (
+select sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) total_venda
+on venda_sabor.ano = total_venda.ano;
+
+
+-- realizando operação
+select venda_sabor.sabor, venda_sabor.ano, venda_sabor.quantidade_vendida, total_venda.quantidade_vendida as total,
+round(((venda_sabor.quantidade_vendida/total_venda.quantidade_vendida) * 100), 2) as percentual
+from
+(
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by tp.sabor, to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) venda_sabor
+inner join (
+select sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) total_venda
+on venda_sabor.ano = total_venda.ano;
+
+
+-- removendo coluna total
+select venda_sabor.sabor, venda_sabor.ano, venda_sabor.quantidade_vendida, 
+round(((venda_sabor.quantidade_vendida/total_venda.quantidade_vendida) * 100), 2) as percentual
+from
+(
+select tp.sabor, sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by tp.sabor, to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) venda_sabor
+inner join (
+select sum(inf.quantidade) as quantidade_vendida, to_char(nf.data_venda, 'yyyy') as ano 
+from itens_notas_fiscais inf
+inner join tabela_de_produtos tp
+on inf.codigo_do_produto = tp.codigo_do_produto
+inner join notas_fiscais nf
+on inf.numero = nf.numero
+where to_char(nf.data_venda, 'yyyy') = '2016'
+group by to_char(nf.data_venda, 'yyyy')
+order by sum(inf.quantidade) desc
+) total_venda
+on venda_sabor.ano = total_venda.ano;
