@@ -576,3 +576,43 @@ group by to_char(nf.data_venda, 'yyyy')
 order by sum(inf.quantidade) desc
 ) total_venda
 on venda_sabor.ano = total_venda.ano;
+
+-- organizando os códigos
+SELECT
+    venda_sabor.sabor,
+    venda_sabor.ano,
+    venda_sabor.quantidade_vendida,
+    round(((venda_sabor.quantidade_vendida / total_venda.quantidade_vendida) * 100), 2) AS percentual
+FROM
+         (
+        SELECT
+            tp.sabor,
+            SUM(inf.quantidade)            AS quantidade_vendida,
+            to_char(nf.data_venda, 'yyyy') AS ano
+        FROM
+                 itens_notas_fiscais inf
+            INNER JOIN tabela_de_produtos tp ON inf.codigo_do_produto = tp.codigo_do_produto
+            INNER JOIN notas_fiscais      nf ON inf.numero = nf.numero
+        WHERE
+            to_char(nf.data_venda, 'yyyy') = '2016'
+        GROUP BY
+            tp.sabor,
+            to_char(nf.data_venda, 'yyyy')
+        ORDER BY
+            SUM(inf.quantidade) DESC
+    ) venda_sabor
+    INNER JOIN (
+        SELECT
+            SUM(inf.quantidade)            AS quantidade_vendida,
+            to_char(nf.data_venda, 'yyyy') AS ano
+        FROM
+                 itens_notas_fiscais inf
+            INNER JOIN tabela_de_produtos tp ON inf.codigo_do_produto = tp.codigo_do_produto
+            INNER JOIN notas_fiscais      nf ON inf.numero = nf.numero
+        WHERE
+            to_char(nf.data_venda, 'yyyy') = '2016'
+        GROUP BY
+            to_char(nf.data_venda, 'yyyy')
+        ORDER BY
+            SUM(inf.quantidade) DESC
+    ) total_venda ON venda_sabor.ano = total_venda.ano;
