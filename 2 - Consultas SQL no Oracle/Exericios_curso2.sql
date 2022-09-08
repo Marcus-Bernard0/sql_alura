@@ -105,38 +105,62 @@ group by to_char(data_venda, 'yyyy') ;
 -- Dica: pode parecer difícil, mas este é o exercício mais fácil de resolver.
 
 
-select venda_tamanho.tamanho, venda_tamanho.ano, venda_tamanho.quantidade_vendas,
-round(((venda_tamanho.quantidade_vendas/total_venda.quantidade_vendas) * 100), 2) as percentual
-from
-(
-select tp.tamanho, to_char(nf.data_venda, 'yyyy') as ano, sum(inf.quantidade) as quantidade_vendas 
-from tabela_de_produtos tp
-inner join itens_notas_fiscais inf
-on inf.codigo_do_produto = tp.codigo_do_produto
-inner join notas_fiscais nf
-on inf.numero = nf.numero
-where to_char(nf.data_venda, 'yyyy') = '2016'
-group by tp.tamanho, to_char(nf.data_venda, 'yyyy')
-order by tp.tamanho desc
-) venda_tamanho
-inner join
-(
-select to_char(nf.data_venda, 'yyyy') as ano, sum(inf.quantidade) as quantidade_vendas
-from tabela_de_produtos tp
-inner join itens_notas_fiscais inf
-on inf.codigo_do_produto = tp.codigo_do_produto
-inner join notas_fiscais nf
-on inf.numero = nf.numero
-where to_char(nf.data_venda, 'yyyy') = '2016'
-group by to_char(nf.data_venda, 'yyyy')
-) total_venda
-on venda_tamanho.ano = total_venda.ano
-order by percentual desc;
+SELECT
+    venda_tamanho.tamanho,
+    venda_tamanho.ano,
+    venda_tamanho.quantidade_vendas,
+    round(((venda_tamanho.quantidade_vendas / total_venda.quantidade_vendas) * 100), 2) AS percentual
+FROM
+         (
+        SELECT
+            tp.tamanho,
+            to_char(nf.data_venda, 'yyyy') AS ano,
+            SUM(inf.quantidade)            AS quantidade_vendas
+        FROM
+                 tabela_de_produtos tp
+            INNER JOIN itens_notas_fiscais inf ON inf.codigo_do_produto = tp.codigo_do_produto
+            INNER JOIN notas_fiscais       nf ON inf.numero = nf.numero
+        WHERE
+            to_char(nf.data_venda, 'yyyy') = '2016'
+        GROUP BY
+            tp.tamanho,
+            to_char(nf.data_venda, 'yyyy')
+        ORDER BY
+            tp.tamanho DESC
+    ) venda_tamanho
+    INNER JOIN (
+        SELECT
+            to_char(nf.data_venda, 'yyyy') AS ano,
+            SUM(inf.quantidade)            AS quantidade_vendas
+        FROM
+                 tabela_de_produtos tp
+            INNER JOIN itens_notas_fiscais inf ON inf.codigo_do_produto = tp.codigo_do_produto
+            INNER JOIN notas_fiscais       nf ON inf.numero = nf.numero
+        WHERE
+            to_char(nf.data_venda, 'yyyy') = '2016'
+        GROUP BY
+            to_char(nf.data_venda, 'yyyy')
+    ) total_venda ON venda_tamanho.ano = total_venda.ano
+ORDER BY
+    percentual DESC;
 
 
 
+-- Resolvendo por Views
+select * from venda_total;
+select * from venda_por_tamanho;
 
 
+SELECT
+    venda_por_tamanho.tamanho,
+    venda_por_tamanho.ano,
+    venda_por_tamanho.quantidade_vendas,
+    round(((venda_por_tamanho.quantidade_vendas / venda_total.quantidade_vendas) * 100), 2) AS percentual
+FROM
+         venda_por_tamanho
+    INNER JOIN venda_total ON venda_por_tamanho.ano = venda_total.ano
+ORDER BY
+    percentual DESC;
 
 
 
