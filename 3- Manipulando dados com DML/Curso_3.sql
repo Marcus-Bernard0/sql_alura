@@ -14,4 +14,23 @@ bairro varchar(50) null,
 comissao float null,
 data_admissao date null,
 ferias integer null,
-primary key (matricula)) 
+primary key (matricula));
+
+create table tabela_vendas
+(numero varchar(5) not null,
+data_venda date null,
+cpf varchar(11) not null,
+matricula varchar(5) not null,
+imposto float null,
+primary key (numero));
+
+-- criando chave estrangeira
+
+alter table tabela_vendas
+add constraint FK_clientes
+foreign key (cpf) references clientes (cpf);
+
+alter table tabela_vendas
+add constraint FK_vendedores
+foreign key (matricula) references vendedores (matricula);
+
