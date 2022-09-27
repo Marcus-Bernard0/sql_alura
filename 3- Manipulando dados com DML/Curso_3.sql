@@ -34,3 +34,23 @@ alter table tabela_vendas
 add constraint FK_vendedores
 foreign key (matricula) references vendedores (matricula);
 
+-- alterando campo
+alter table tab_departamento rename column cidade_departamento to cidade;
+alter table tab_projeto rename column orcamento_projeto to orcamento;
+alter table tab_projeto rename column data_inicio_projeto to data_inicio;
+alter table tab_dependente rename column tipo_dependencia to tipo;
+alter table tab_dependente rename column idade_dependencia to idade;
+
+-- tabela com duas chaves
+create table itens_notas
+(
+numero varchar(5) not null,
+codigo varchar (10) not null,
+quantidade integer null,
+preco float,
+primary key (numero, codigo)
+);
+
+alter table itens_notas
+add constraint fk_produtos
+foreign key (codigo) references produtos (codigo);
