@@ -18,3 +18,36 @@ VALUES ('D0004','DEPARTAMENTO D0004', 'CURITIBA','E0002')
 INTO TAB_DEPARTAMENTO
 VALUES ('D0005','DEPARTAMENTO D0005', 'CAMPO GRANDE','E0002')
 SELECT * FROM DUAL;
+
+
+CREATE TABLE TAB_PROJETO_ORCAMENTO
+(cod_projeto VARCHAR(5), percentual_novo_orcamento FLOAT);
+
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0001',0.2);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0002',0.1);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0003',-0.1);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0005',0.23);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0007',0.09);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0008',-0.03);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0009',-0.05);
+INSERT INTO TAB_PROJETO_ORCAMENTO VALUES ('P0011',0.123);
+
+
+select * from tab_projeto;
+select * from tab_projeto_orcamento;
+
+update tab_projeto TB set TB.orcamento = TB.orcamento * (1 + 
+(select TBO.percentual_novo_orcamento from tab_projeto_orcamento TBO
+where TB.cod_projeto = TBO.cod_projeto))
+where exists
+(select 1 from tab_projeto_orcamento TBO
+where TB.cod_projeto = TBO.cod_projeto);
+
+
+
+
+
+
+
+
+

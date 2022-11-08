@@ -139,8 +139,8 @@ inner join
 tabela_de_produtos_fonte TPF
 on P.codigo = TPF.codigo_do_produto
 
-- Para a inserir a partir de uma tabela fonte, os campos devem ser da mesma ordem e mesmo nome.
-- Inserindo fazendo a remoção do código que se repete. Dinâmico e insere todos dados novos
+--  Para a inserir a partir de uma tabela fonte, os campos devem ser da mesma ordem e mesmo nome.
+--  Inserindo fazendo a remoção do código que se repete. Dinâmico e insere todos dados novos
 
 insert into produtos
 select
@@ -172,3 +172,65 @@ select * from produtos;
 select * from clientes;
 select * from vendedores;
 select * from notas;
+
+-- Alterando dados da tabela
+select * from produtos where codigo = '1040107';
+update produtos set preco_lista = 5.2 where codigo = '1040107';
+update produtos set sabor = 'Laranja', embalagem = 'PET' where codigo = '1040107';
+
+-- Alterando com replace
+select descritor, replace(descritor, 'Melancia','Laranja') from produtos where codigo = '1040107';
+update produtos set descritor = replace(descritor, 'Melancia','Laranja') where codigo = '1040107';
+
+
+
+-- Table fonte
+  CREATE TABLE "TABELA_DE_VENDEDORES_FONTE" 
+   ("MATRICULA" NVARCHAR2(5), 
+	"NOME" NVARCHAR2(100), 
+	"PERCENTUAL_COMISSAO" FLOAT(126), 
+	"DATA_ADMISSAO" DATE, 
+	"DE_FERIAS" NUMBER(1,0), 
+	"BAIRRO" NVARCHAR2(50)
+   );
+
+Insert into TABELA_DE_VENDEDORES_FONTE (MATRICULA,NOME,PERCENTUAL_COMISSAO,DATA_ADMISSAO,DE_FERIAS,BAIRRO) values ('00235','Marcio Almeida Silva','0,08',to_date('15/08/14','DD/MM/RR'),'0','Tijuca');
+Insert into TABELA_DE_VENDEDORES_FONTE (MATRICULA,NOME,PERCENTUAL_COMISSAO,DATA_ADMISSAO,DE_FERIAS,BAIRRO) values ('00236','Claudia Morais','0,08',to_date('17/09/13','DD/MM/RR'),'1','Jardins');
+Insert into TABELA_DE_VENDEDORES_FONTE (MATRICULA,NOME,PERCENTUAL_COMISSAO,DATA_ADMISSAO,DE_FERIAS,BAIRRO) values ('00237','Roberta Martins','0,11',to_date('18/03/17','DD/MM/RR'),'1','Copacabana');
+Insert into TABELA_DE_VENDEDORES_FONTE (MATRICULA,NOME,PERCENTUAL_COMISSAO,DATA_ADMISSAO,DE_FERIAS,BAIRRO) values ('00238','Pericles Alves','0,11',to_date('21/08/16','DD/MM/RR'),'0','Santo Amaro');
+
+select * from vendedores V;
+select * from tabela_de_vendedores TVF;
+
+-- inner join
+select V.matricula as matricula_vendedores, TVF.matricula as matricula_fonte,
+V.ferias as ferias_vendedores, TVF.de_ferias as ferias_fonte
+from 
+vendedores V
+inner join
+tabela_de_vendedores TVF
+on V.matricula = SUBSTR(TVF.matricula, 3, 3);
+
+
+-- A tabela fonte não está acesível, objetivo é elaborar uma atualização automática
+update tabela_de_vendedores set de_ferias = 0 where matricula in ('00236', '00237');
+update tabela_de_vendedores set de_ferias = 1 where matricula in ('00235', '00238');
+
+-- Comando EXISTS (1´é verdadeiro)
+select V.matricula as matricula_vendedores,
+V.ferias as ferias_vendedores
+from vendedores V
+where exists
+(select 1 from tabela_de_vendedores TVF
+where V.matricula = SUBSTR(TVF.matricula, 3, 3));
+
+-- Update e exists
+select *  from vendedores;
+select * from tabela_de_vendedores;
+
+update vendedores V set V.ferias =
+(select TVF.de_ferias from tabela_de_vendedores TVF
+where V.matricula = SUBSTR(TVF.matricula, 3, 3))
+where exists
+(select 1 from tabela_de_vendedores TVF
+where V.matricula = SUBSTR(TVF.matricula, 3, 3));
