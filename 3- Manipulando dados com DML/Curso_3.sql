@@ -234,3 +234,39 @@ where V.matricula = SUBSTR(TVF.matricula, 3, 3))
 where exists
 (select 1 from tabela_de_vendedores TVF
 where V.matricula = SUBSTR(TVF.matricula, 3, 3));
+
+-- Deletando produtos automaticamente quando comparado com a tabela fonte e houver diferenças
+select * from tabela_de_produtos_fonte;
+delete from tabela_de_produtos_fonte where codigo_do_produto ='999999';
+
+select * from produtos;
+select * from produtos where codigo = '1001001';
+select * from produtos where substr(descritor, 1,15)='Sabor dos Alpes';
+select * from tabela_de_produtos_fonte where substr(nome_do_produto, 1,15)='Sabor dos Alpes';
+
+delete from produtos where codigo = '1001001';
+
+select count(*) from produtos;
+select count(*) from tabela_de_produtos_fonte;
+
+-- Descobrindo as diferenças
+select 
+P.codigo as codigo_produto, TPF.codigo_do_produto as codigo_fonte,
+P.descritor as nome_produto, tpf.nome_do_produto as nome_fonte
+from produtos P left join tabela_de_produtos_fonte TPF
+on P.codigo = TPF.codigo_do_produto;
+
+-- Exibindo os codigos nulos
+select P.codigo from produtos P 
+left join tabela_de_produtos_fonte TPF
+on P.codigo = TPF.codigo_do_produto
+where TPF.codigo_do_produto is null;
+
+ -- Apagando as linhas
+delete from produtos P where
+P.codigo in(
+select P.codigo from produtos P 
+left join tabela_de_produtos_fonte TPF
+on P.codigo = TPF.codigo_do_produto
+where TPF.codigo_do_produto is null
+ );
