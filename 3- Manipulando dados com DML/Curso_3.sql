@@ -270,3 +270,13 @@ left join tabela_de_produtos_fonte TPF
 on P.codigo = TPF.codigo_do_produto
 where TPF.codigo_do_produto is null
  );
+
+commit;
+
+-- Rollback
+
+create table produtos2 as (select * from produtos);
+
+select * from produtos2;
+update produtos2 set preco_lista=8;
+rollback;
