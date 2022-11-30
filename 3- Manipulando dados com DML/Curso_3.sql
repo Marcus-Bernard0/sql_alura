@@ -308,3 +308,109 @@ insert into tab_padrao (descritor, endereco, cidade, data_criacao)
 values ('cliente 1', 'Rua tupinambas', 'Poços', to_date('2022-01-22', 'YYYY-MM-DD'));
 
 insert into tab_padrao (descritor) values ('cliente 2');
+
+-- Trigers
+delete from itens_notas;
+delete from notas;
+
+select * from clientes;
+--1471156710
+select * from vendedores;
+-- 235
+select * from produtos;
+-- 1000889
+select * from notas;
+
+insert into notas (numero, data_venda, cpf, matricula, imposto)
+values('001', to_date('2019-01-01', 'yyyy-mm-dd'),'1471156710', '235', 0.1);
+
+insert into itens_notas (numero, codigo, quantidade, preco)
+values('001', '1000889', 10, 10);
+
+INSERT INTO NOTAS (NUMERO, DATA_VENDA, CPF, MATRICULA, IMPOSTO)
+VALUES ('002',TO_DATE('2019-01-01','YYYY-MM-DD'), '1471156710', '235', 0.1);
+INSERT INTO ITENS_NOTAS (NUMERO, CODIGO, QUANTIDADE, PRECO)
+VALUES ('002','1000889',15,10);
+
+SELECT * FROM NOTAS;
+SELECT * FROM ITENS_NOTAS;
+
+select
+n.data_venda, sum(itn.quantidade * itn.preco) as faturamento
+from
+notas n
+inner join
+itens_notas itn
+on n.numero = itn.numero
+group by n.data_venda;
+
+
+create table tab_faturamento(data_venda date null, faturamento float);
+
+insert into tab_faturamento
+select
+n.data_venda, sum(itn.quantidade * itn.preco) as faturamento
+from
+notas n
+inner join
+itens_notas itn
+on n.numero = itn.numero
+group by n.data_venda;
+
+INSERT INTO NOTAS (NUMERO, DATA_VENDA, CPF, MATRICULA, IMPOSTO)
+VALUES ('004',TO_DATE('2019-01-02','YYYY-MM-DD'), '1471156710', '235', 0.1);
+INSERT INTO ITENS_NOTAS (NUMERO, CODIGO, QUANTIDADE, PRECO)
+VALUES ('004','1000889',21,10);
+
+create trigger tg_tab_faturamento
+after insert on itens_notas
+begin
+delete from tab_faturamento;
+insert into tab_faturamento
+select
+n.data_venda, sum(itn.quantidade * itn.preco) as faturamento
+from
+notas n
+inner join
+itens_notas itn
+on n.numero = itn.numero
+group by n.data_venda;
+end;
+
+INSERT INTO NOTAS (NUMERO, DATA_VENDA, CPF, MATRICULA, IMPOSTO)
+VALUES ('006',TO_DATE('2019-01-03','YYYY-MM-DD'), '1471156710', '235', 0.1);
+INSERT INTO ITENS_NOTAS (NUMERO, CODIGO, QUANTIDADE, PRECO)
+VALUES ('006','1000889',40,10);
+
+
+select * from tab_faturamento;
+select * from notas;
+select * from itens_notas;
+
+update itens_notas set quantidade = 1000 where numero = '004';
+DELETE FROM ITENS_NOTAS WHERE NUMERO = '004';
+DELETE FROM NOTAS WHERE NUMERO = '004';
+
+CREATE OR REPLACE TRIGGER TG_TAB_FATURAMENTO
+AFTER INSERT OR UPDATE OR DELETE ON ITENS_NOTAS
+BEGIN
+DELETE FROM TAB_FATURAMENTO;
+INSERT INTO TAB_FATURAMENTO
+SELECT
+N.DATA_VENDA, SUM(ITN.QUANTIDADE * ITN.PRECO) AS FATURAMENTO
+FROM
+NOTAS N
+INNER JOIN
+ITENS_NOTAS ITN
+ON N.NUMERO = ITN.NUMERO
+GROUP BY N.DATA_VENDA;
+END;
+
+INSERT INTO NOTAS (NUMERO, DATA_VENDA, CPF, MATRICULA, IMPOSTO)
+VALUES ('007',TO_DATE('2019-01-03','YYYY-MM-DD'), '1471156710', '235', 0.1);
+INSERT INTO ITENS_NOTAS (NUMERO, CODIGO, QUANTIDADE, PRECO)
+VALUES ('007','1000889',40,10);
+
+UPDATE ITENS_NOTAS SET QUANTIDADE = 1000 WHERE NUMERO = '007';
+DELETE FROM ITENS_NOTAS WHERE NUMERO = '007';
+DELETE FROM NOTAS WHERE NUMERO = '007';
